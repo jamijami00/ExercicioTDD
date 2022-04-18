@@ -2,14 +2,13 @@ package tdd_fatura_boleto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ProcessadorBoletos {
 
-    private ArrayList processamento;
+    private final ArrayList<Boleto> processamento;
 
     public ProcessadorBoletos(){
-        processamento = new ArrayList<Boleto>();
+        processamento = new ArrayList<>();
     }
 
     public void adiciona(Boleto item) {
@@ -23,9 +22,8 @@ public class ProcessadorBoletos {
     public Fatura gerarFatura(String nome, double valorFatura) {
         double valorTotal = 0.0;
 
-        for (Iterator i = processamento.iterator(); i.hasNext();){
-            Boleto item = (Boleto) i.next();
-            valorTotal += item.getValorPago();
+        for (Boleto o : processamento) {
+            valorTotal += o.getValorPago();
         }
 
         return new Fatura(nome, valorTotal, LocalDate.now(), "PAGO");
