@@ -1,14 +1,14 @@
 package tdd_fatura_boleto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Fatura {
 
     private String nomeCliente;
     private double valorTotal;
-    private Date data;
+    private LocalDate data;
 
-    Fatura (String nomeCliente, double valorTotal, Date data){
+    Fatura (String nomeCliente, double valorTotal, LocalDate data){
         this.nomeCliente = nomeCliente;
         this.valorTotal = valorTotal;
         this.data = data;
@@ -22,11 +22,11 @@ public class Fatura {
         this.valorTotal = valorTotal;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

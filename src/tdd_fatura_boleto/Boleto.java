@@ -1,15 +1,15 @@
 package tdd_fatura_boleto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Boleto {
 
     private int codigo;
     private String tipo;
-    private Date data;
+    private LocalDate data;
     private double valorPago;
 
-    public Boleto(int codigo, String tipo, Date data, double valorPago) {
+    public Boleto(int codigo, String tipo, LocalDate data, double valorPago) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.data = data;
@@ -32,11 +32,11 @@ public class Boleto {
         this.tipo = tipo;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
