@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import tdd_fatura_boleto.Boleto;
+import tdd_fatura_boleto.Fatura;
 import tdd_fatura_boleto.ProcessadorBoletos;
 
 import java.time.LocalDate;
@@ -35,9 +36,9 @@ public class ProcessadorBoletosTest {
         pb.adiciona(b2);
         Boleto b3 = new Boleto(3,"BOLETO", LocalDate.now(),600.00);
         pb.adiciona(b3);
-        pb.gerarFatura("João", 1500.00);
+        Fatura f1 = pb.gerarFatura("João", 1500.00);
 
-        assertEquals("PAGO", fatura.getStatus());
+        assertEquals("PAGO", f1.getStatus());
     }
 
 }
