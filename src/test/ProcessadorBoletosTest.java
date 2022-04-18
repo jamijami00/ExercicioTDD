@@ -30,15 +30,29 @@ public class ProcessadorBoletosTest {
     @Test
     public void testGerarFatura(){
         ProcessadorBoletos pb = new ProcessadorBoletos();
-        Boleto b1 = new Boleto(1,"BOLETO", LocalDate.now(),500.00);
-        pb.adiciona(b1);
-        Boleto b2 = new Boleto(2,"BOLETO", LocalDate.now(),400.00);
-        pb.adiciona(b2);
-        Boleto b3 = new Boleto(3,"BOLETO", LocalDate.now(),600.00);
-        pb.adiciona(b3);
+
+        //Iteração 1
+        Boleto a1 = new Boleto(1,"BOLETO", LocalDate.now(),500.00);
+        pb.adiciona(a1);
+        Boleto a2 = new Boleto(2,"BOLETO", LocalDate.now(),400.00);
+        pb.adiciona(a2);
+        Boleto a3 = new Boleto(3,"BOLETO", LocalDate.now(),600.00);
+        pb.adiciona(a3);
         Fatura f1 = pb.gerarFatura("João", 1500.00);
 
         assertEquals("PAGO", f1.getStatus());
+
+        //Iteração 2
+        Boleto b1 = new Boleto(1, "BOLETO", LocalDate.now(), 1000.00);
+        Boleto b2 = new Boleto(2, "BOLETO", LocalDate.now(), 500.00);
+        Boleto b3 = new Boleto(3, "BOLETO", LocalDate.now(), 250.00);
+
+        pb.adiciona(b1);
+        pb.adiciona(b2);
+        pb.adiciona(b3);
+
+        Fatura f2 = pb.gerarFatura("Marcos", 1500.00);
+        assertEquals(1750.00, f2.getValorTotal());
     }
 
 }
