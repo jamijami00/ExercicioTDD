@@ -7,8 +7,7 @@ import tdd_fatura_boleto.ProcessadorBoletos;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProcessadorBoletosTest {
     private static final String BOLETO = "BOLETO";
@@ -52,6 +51,17 @@ public class ProcessadorBoletosTest {
 
         Fatura f2 = pb.gerarFatura("Marcos", 1500.00);
         assertEquals(1750.00, f2.getValorTotal());
+        pb.limpaFaturas();
+
+        //Iteração 3
+        Boleto c1 = new Boleto(1, BOLETO, LocalDate.now(),500.00);
+        Boleto c2 = new Boleto(1, BOLETO, LocalDate.now(),400.00);
+
+        pb.adiciona(c1);
+        pb.adiciona(c2);
+
+        Fatura f3 = pb.gerarFatura("Carlos", 2000.00);
+        assertNull(f3.getStatus());
         pb.limpaFaturas();
     }
 
