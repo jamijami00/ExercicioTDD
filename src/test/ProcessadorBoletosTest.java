@@ -41,6 +41,7 @@ public class ProcessadorBoletosTest {
         Fatura f1 = pb.gerarFatura("João", 1500.00);
 
         assertEquals("PAGO", f1.getStatus());
+        pb.limpaFaturas();
 
         //Iteração 2
         Boleto b1 = new Boleto(1, "BOLETO", LocalDate.now(), 1000.00);
