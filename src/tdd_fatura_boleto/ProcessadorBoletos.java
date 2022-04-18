@@ -26,6 +26,11 @@ public class ProcessadorBoletos {
             valorTotal += o.getValorPago();
         }
 
+        //Checar se foi o suficiente para pagar
+        if (valorFatura > valorTotal){
+            return new Fatura(nome, valorTotal, LocalDate.now());
+        }
+
         return new Fatura(nome, valorTotal, LocalDate.now(), "PAGO");
     }
 
